@@ -2,14 +2,14 @@
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { setStorageItem, getStorageItem } from "../utils/storage"
 export default function Home() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const router = useRouter();
   
   useEffect(() => {
-    let savedEmail = localStorage.getItem("email");
+    let savedEmail = getStorageItem("email");
     if(savedEmail){
       router.push("/dashboard");
     }
@@ -17,7 +17,7 @@ export default function Home() {
 
 
   function addEmail(){
-      localStorage.setItem("email", email)
+      setStorageItem("email", email)
       router.push("/dashboard");
   }
   
