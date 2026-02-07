@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {listTasks, addTask, toggleTaskDone} from "../../../../services/task.service"
 import { useParams } from "next/navigation";
 import {Task} from "../../../../types/Task"
-
+import TaskCard from "./TaskCard"
 const page = () => {
   const { id } = useParams<{ id: string }>();
   const [tasks, setTasks] = useState<Task[]>([])
@@ -13,7 +13,7 @@ const page = () => {
     setTasks(listTasks())
   }, [])
 
-  function setDone(taskID: string){
+  function setDone(taskID: string): void{
     toggleTaskDone(taskID)
     setTasks(listTasks())
   }
@@ -30,11 +30,12 @@ const page = () => {
         <input type='submit' value="Add Task"/>
       </form>
       {
-        tasks.map(task => (
-          <div key={task.id}>
-            <p>{task.title}</p>
-            <input type="checkbox" checked={task.done} onChange={() => {setDone(task.id)}} />
-          </div>
+        tasks.filter(task => task.projectId === id).map(task => (
+          <TaskCard
+            key={task.id}
+            task={task}
+            setDone={setDone}
+          />
         ))
       }
     </div>
