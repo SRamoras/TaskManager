@@ -5,23 +5,23 @@ import { getStorageItem } from "../../utils/storage"
 import { createProject, listProjects, deleteProject } from "../../services/project.service"
 import { Project } from "../../types/Project"
 import ProjectCard from "./ProjectCard"
+import Stats from './Stats';
 
 const page = () => {
-    const router = useRouter();
-    const [name, setName] = useState<string>("")
-    const [projects, setProjects] = useState<Project[]>([])
+  const router = useRouter();
+  const [name, setName] = useState<string>("")
+  const [projects, setProjects] = useState<Project[]>([])
 
-    useEffect(() => {
-        let isSaved = getStorageItem("email")
-        if(!isSaved){
-            router.push("/");
-        }
-    }, [router])
+  useEffect(() => {
+      let isSaved = getStorageItem("email")
+      if(!isSaved){
+          router.push("/");
+      }
+  }, [router])
 
-    useEffect(() => {
-      setProjects(listProjects());
-    }, []);
-
+  useEffect(() => {
+    setProjects(listProjects());
+  }, []);
 
   return (
     <div>
@@ -33,6 +33,8 @@ const page = () => {
         <input type="text" value={name} onChange={e => setName(e.target.value)} />
         <input type="submit" value="Add Project" />
       </form>
+
+      <Stats />
 
       {
       projects.map(project => (
