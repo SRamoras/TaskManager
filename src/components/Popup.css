@@ -1,0 +1,29 @@
+.popupContainer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.popupIcon {
+  font-size: 22px;
+  color: #555;
+  margin-top: 2px;
+}
+
+.popupText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}

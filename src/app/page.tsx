@@ -6,6 +6,7 @@ import { setStorageItem, getStorageItem } from "../utils/storage"
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Label from "../components/Label";
+import Popup from "@/components/Popup";
 
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
   
   return (
     <div className={styles.page}>
+      <Popup />
       <main className={styles.main}>
         <form className={styles.formLogin} onSubmit={
           e => {
