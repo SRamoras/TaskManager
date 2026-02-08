@@ -22,12 +22,43 @@ const Stats = () => {
 
   return (
     <div className="statsContainer">
-        <p className='statsCard'>Total de projetos: {totalProjects}</p>
-        <p className='statsCard'>Total de tarefas: {totalTasks}</p>
-        <p className='statsCard'>Tarefas concluídas: {completedTasks} ✅</p>
-        <p className='statsCard'>Tarefas pendentes: {pendingTasks} ⌛</p>
-    </div>
-  )
-}
+      <div className="statsCard">
+        <span>
+Total projects</span>
+        <strong className='statsStrong'>{totalProjects} 
+          <span className="material-symbols-outlined">
+            deployed_code
+          </span>
+        </strong>
+      </div>
 
+      <div className="statsCard">
+        <span>Total tasks</span>
+        <strong className='statsStrong'>{totalTasks} 
+          <span className="material-symbols-outlined">
+            assignment
+          </span>
+        </strong>
+      </div>
+
+      <div className="statsCard">
+        <span>Completed tasks</span>
+        <strong className='statsStrong'>{completedTasks}
+          <span style={{color: "green"}} className="material-symbols-outlined">
+            check_circle
+          </span>
+        </strong>
+      </div>
+
+      <div className="statsCard">
+        <span>Pending tasks</span>
+        <strong className='statsStrong'>{pendingTasks} 
+          <span style={{color: "orange"}} className="material-symbols-outlined">
+            clock_loader_10
+          </span>
+        </strong>
+      </div>
+    </div>
+  );
+}
 export default Stats
