@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FlowLite
 
-## Getting Started
+SaaS-like mini application developed with Next.js (App Router) and TypeScript, focused on frontend architecture, separation of concerns, and browser-based persistence.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- Next.js
+- TypeScript
+- localStorage
+- Docker
+- Makefile
+
+---
+
+## Goal
+
+- Simulate authentication (fake login)
+- Work with protected routes
+- Separate UI, logic, and types
+- Persist data without a backend
+- Practice SaaS frontend project structure
+
+---
+
+## Features
+
+- Fake login (stored in localStorage)
+- Protected /dashboard route
+- Project management
+- Task management per project
+- Mark tasks as completed
+- Simple statistics (counters)
+
+---
+
+## Architecture
+
+```text
+src/
+ ├─ app/        # Routes (App Router)
+ ├─ components/ # UI components
+ ├─ services/   # Domain logic (pure functions)
+ ├─ types/      # TypeScript interfaces
+ └─ utils/      # Helpers (storage / SSR-safe)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Persistence
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Data is stored in localStorage
+- Helpers prevent SSR-related errors
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Run locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Run with Docker
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project includes a Dockerfile and Makefile for containerized execution.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Build image
+
+```bash
+make build
+```
+
+or
+
+```bash
+docker build -t task-manager .
+```
+
+### Run container
+
+```bash
+make run
+```
+
+or
+
+```bash
+docker run --rm -it -p 3000:3000 -v "$(PWD)":/app task-manager
+```
+
+The application will be available at:
+
+```
+http://localhost:3000
+```
+
+### Other commands
+
+```bash
+make stop
+make clean
+make bash
+```
+
+---
+
+## Dockerfile (summary)
+
+- Base image: node:20-alpine
+- Installs dependencies
+- Exposes port 3000
+- Runs npm run dev
+
+---
+
+## Technical Notes
+
+- No backend
+- No real authentication
+- Project focused on architecture and logic
+- UI intentionally kept simple
+
+---
