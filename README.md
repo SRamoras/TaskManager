@@ -1,4 +1,4 @@
-# FlowLite
+# TaskManager
 
 SaaS-like mini application developed with Next.js (App Router) and TypeScript, focused on frontend architecture, separation of concerns, and browser-based persistence.
 
