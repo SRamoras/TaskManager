@@ -45,6 +45,7 @@ const page = () => {
 
   return (
     <div className={styles.page}>
+      <h1 className={styles.title}>Task Manager Dashboard</h1>
       <Stats />
       <div className={styles.header}>
         <div className={styles.searchContainer}>
